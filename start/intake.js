@@ -20,7 +20,7 @@
 
   var TITLES = ['About you', 'What you want built', 'Where you are today', 'Must-haves and nice-to-haves', 'Timeline and budget', 'Anything else', 'Review and submit'];
   var LABELS = {
-    name: 'Name', email: 'Email', company: 'Company', role: 'Role', website: 'Website', company_size: 'Company size',
+    name: 'Name', email: 'Email', company: 'Company', role: 'Role', website: 'Website', company_size: 'Team size (employees)',
     decision_maker: 'Decision maker for this budget', project_types: 'Project type', description: 'Description',
     success_90_days: 'Success in 90 days', current_tools: 'Current tools', integrations: 'Integrations',
     integrations_other: 'Other integrations', data_migration: 'Data to migrate', data_details: 'Data details',
@@ -31,11 +31,11 @@
     financials_access: 'Read-only access to financials', ten_x: 'What 10x looks like', anything_else: 'Anything else', heard_about_us: 'How you heard about us'
   };
   var ORDER = [
-    [1, ['name', 'email', 'company', 'role', 'website', 'company_size', 'decision_maker']],
+    [1, ['name', 'email', 'company', 'role', 'website', 'annual_revenue', 'company_size', 'decision_maker']],
     [2, ['project_types', 'description', 'success_90_days']],
     [3, ['current_tools', 'integrations', 'integrations_other', 'data_migration', 'data_details', 'users_who', 'users_count']],
     [4, ['must_haves', 'nice_to_haves', 'reference_url']],
-    [5, ['target_launch', 'hard_deadline', 'structure', 'budget', 'payment_style', 'annual_revenue', 'gross_margin', 'revenue_growth', 'ownership', 'financials_access', 'ten_x']],
+    [5, ['target_launch', 'hard_deadline', 'structure', 'budget', 'payment_style', 'gross_margin', 'revenue_growth', 'ownership', 'financials_access', 'ten_x']],
     [6, ['anything_else', 'heard_about_us']]
   ];
 
