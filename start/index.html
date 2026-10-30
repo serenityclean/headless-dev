@@ -213,7 +213,16 @@
               <p class="hint" id="h-deadline">Optional. Pick a date if something fixed drives the schedule, such as a contract end or a launch event.</p>
               <input type="date" id="f-deadline" name="hard_deadline" aria-describedby="h-deadline">
             </div>
-            <fieldset class="field" data-required="radio" data-name="budget">
+            <fieldset class="field" data-required="radio" data-name="structure">
+              <legend>How would you like to structure this? <span class="req">Required</span></legend>
+              <div class="choices stack">
+                <label class="choice"><input type="radio" name="structure" value="Pay for the build"><span>Pay for the build</span></label>
+                <label class="choice"><input type="radio" name="structure" value="Growth Partnership"><span>Growth Partnership: lower cost up front, we share in the results</span></label>
+                <label class="choice"><input type="radio" name="structure" value="Not sure yet"><span>Not sure yet, show me both</span></label>
+              </div>
+            </fieldset>
+            <div class="cond" data-cond="Pay for the build,Not sure yet" hidden>
+            <fieldset class="field" data-required="radio" data-name="budget" data-req-for="Pay for the build,Not sure yet">
               <legend>Budget range <span class="req">Required</span></legend>
               <div class="choices">
                 <label class="choice"><input type="radio" name="budget" value="Under $10K"><span>Under $10K</span></label>
@@ -223,14 +232,68 @@
                 <label class="choice"><input type="radio" name="budget" value="$100K+"><span>$100K+</span></label>
               </div>
             </fieldset>
-            <fieldset class="field" data-required="radio" data-name="payment_style">
-              <legend>How would you prefer to pay? <span class="req">Required</span></legend>
+            <fieldset class="field" data-required="radio" data-name="payment_style" data-req-for="Pay for the build,Not sure yet">
+              <legend>How would you prefer to pay for the build? <span class="req">Required</span></legend>
               <div class="choices">
                 <label class="choice"><input type="radio" name="payment_style" value="One-time project"><span>One-time project</span></label>
                 <label class="choice"><input type="radio" name="payment_style" value="Monthly retainer"><span>Monthly retainer</span></label>
                 <label class="choice"><input type="radio" name="payment_style" value="Not sure"><span>Not sure</span></label>
               </div>
             </fieldset>
+            </div>
+            <div class="cond" data-cond="Growth Partnership,Not sure yet" hidden>
+              <p class="cond-note">A Growth Partnership is for established businesses with real revenue that want to scale. We take on a small number of Growth Partners each year. These answers help us see whether it is a good fit for both sides.</p>
+            <fieldset class="field" data-required="radio" data-name="annual_revenue" data-req-for="Growth Partnership">
+              <legend>Annual revenue <span class="req" data-req-badge>Optional</span></legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="annual_revenue" value="Under $500K"><span>Under $500K</span></label>
+                <label class="choice"><input type="radio" name="annual_revenue" value="$500K-$1M"><span>$500K-$1M</span></label>
+                <label class="choice"><input type="radio" name="annual_revenue" value="$1M-$5M"><span>$1M-$5M</span></label>
+                <label class="choice"><input type="radio" name="annual_revenue" value="$5M-$20M"><span>$5M-$20M</span></label>
+                <label class="choice"><input type="radio" name="annual_revenue" value="$20M+"><span>$20M+</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="field" data-required="radio" data-name="gross_margin" data-req-for="Growth Partnership">
+              <legend>Gross margin <span class="req" data-req-badge>Optional</span></legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="gross_margin" value="Under 20%"><span>Under 20%</span></label>
+                <label class="choice"><input type="radio" name="gross_margin" value="20-40%"><span>20-40%</span></label>
+                <label class="choice"><input type="radio" name="gross_margin" value="40-60%"><span>40-60%</span></label>
+                <label class="choice"><input type="radio" name="gross_margin" value="Over 60%"><span>Over 60%</span></label>
+                <label class="choice"><input type="radio" name="gross_margin" value="Not sure"><span>Not sure</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="field" data-required="radio" data-name="revenue_growth" data-req-for="Growth Partnership">
+              <legend>Revenue growth over the last 12 months <span class="req" data-req-badge>Optional</span></legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="revenue_growth" value="Shrinking"><span>Shrinking</span></label>
+                <label class="choice"><input type="radio" name="revenue_growth" value="Flat"><span>Flat</span></label>
+                <label class="choice"><input type="radio" name="revenue_growth" value="Up to 25%"><span>Up to 25%</span></label>
+                <label class="choice"><input type="radio" name="revenue_growth" value="25-100%"><span>25-100%</span></label>
+                <label class="choice"><input type="radio" name="revenue_growth" value="Over 100%"><span>Over 100%</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="field" data-required="radio" data-name="ownership" data-req-for="Growth Partnership">
+              <legend>Ownership <span class="req" data-req-badge>Optional</span></legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="ownership" value="Single owner"><span>Single owner</span></label>
+                <label class="choice"><input type="radio" name="ownership" value="Multiple owners"><span>Multiple owners</span></label>
+                <label class="choice"><input type="radio" name="ownership" value="Has outside investors"><span>Has outside investors</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="field" data-required="radio" data-name="financials_access" data-req-for="Growth Partnership">
+              <legend>Would you share read-only access to your financials (for example Stripe or QuickBooks) so we can agree on milestones? <span class="req" data-req-badge>Optional</span></legend>
+              <div class="choices stack">
+                <label class="choice"><input type="radio" name="financials_access" value="Yes"><span>Yes</span></label>
+                <label class="choice"><input type="radio" name="financials_access" value="Maybe"><span>Maybe</span></label>
+                <label class="choice"><input type="radio" name="financials_access" value="No"><span>No</span></label>
+              </div>
+            </fieldset>
+            <div class="field" data-req-for="Growth Partnership">
+              <label for="f-tenx">What would 10x look like for your business? <span class="req" data-req-badge>Optional</span></label>
+              <textarea id="f-tenx" name="ten_x" rows="4"></textarea>
+            </div>
+            </div>
           </section>
 
           <!-- Step 6 -->

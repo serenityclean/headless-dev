@@ -26,18 +26,52 @@
     integrations_other: 'Other integrations', data_migration: 'Data to migrate', data_details: 'Data details',
     users_who: 'Who will use it', users_count: 'Number of users', must_haves: 'Must-haves', nice_to_haves: 'Nice-to-haves',
     reference_url: 'Reference link', target_launch: 'Target launch', hard_deadline: 'Hard deadline', budget: 'Budget range',
-    payment_style: 'Payment preference', anything_else: 'Anything else', heard_about_us: 'How you heard about us'
+    structure: 'Structure', payment_style: 'Payment preference', annual_revenue: 'Annual revenue',
+    gross_margin: 'Gross margin', revenue_growth: 'Revenue growth, last 12 months', ownership: 'Ownership',
+    financials_access: 'Read-only access to financials', ten_x: 'What 10x looks like', anything_else: 'Anything else', heard_about_us: 'How you heard about us'
   };
   var ORDER = [
     [1, ['name', 'email', 'company', 'role', 'website', 'company_size', 'decision_maker']],
     [2, ['project_types', 'description', 'success_90_days']],
     [3, ['current_tools', 'integrations', 'integrations_other', 'data_migration', 'data_details', 'users_who', 'users_count']],
     [4, ['must_haves', 'nice_to_haves', 'reference_url']],
-    [5, ['target_launch', 'hard_deadline', 'budget', 'payment_style']],
+    [5, ['target_launch', 'hard_deadline', 'structure', 'budget', 'payment_style', 'annual_revenue', 'gross_margin', 'revenue_growth', 'ownership', 'financials_access', 'ten_x']],
     [6, ['anything_else', 'heard_about_us']]
   ];
 
-  function collect() {
+  function structure() {
+    var c = form.querySelector('input[name="structure"]:checked');
+    return c ? c.value : '';
+  }
+
+  function condVisible(el) {
+    var list = el.getAttribute('data-cond').split(',');
+    return list.indexOf(structure()) > -1;
+  }
+
+  // True when the field sits inside a conditional block that is not showing
+  function nameHidden(name) {
+    var el = form.querySelector('[name="' + name + '"]');
+    var c = el && el.closest ? el.closest('.cond') : null;
+    return !!c && c.hidden;
+  }
+
+  function reqFor(f) {
+    var r = f.getAttribute('data-req-for');
+    return r ? r.split(',').indexOf(structure()) > -1 : true;
+  }
+
+  function updateCond() {
+    var conds = form.querySelectorAll('.cond');
+    for (var i = 0; i < conds.length; i++) conds[i].hidden = !condVisible(conds[i]);
+    var badges = form.querySelectorAll('[data-req-badge]');
+    for (var j = 0; j < badges.length; j++) {
+      var f = badges[j].closest('.field');
+      badges[j].textContent = reqFor(f) ? 'Required' : 'Optional';
+    }
+  }
+
+  function collect(raw) {
     var data = {};
     var els = form.elements;
     for (var i = 0; i < els.length; i++) {
@@ -53,12 +87,17 @@
         data[el.name] = el.value.trim();
       }
     }
+    if (!raw) {
+      for (var n in data) {
+        if (nameHidden(n)) data[n] = Array.isArray(data[n]) ? [] : '';
+      }
+    }
     return data;
   }
 
   function saveDraft() {
     try {
-      localStorage.setItem(DRAFT_KEY, JSON.stringify({ step: current, data: collect() }));
+      localStorage.setItem(DRAFT_KEY, JSON.stringify({ step: current, data: collect(true) }));
     } catch (e) {}
   }
 
@@ -82,6 +121,7 @@
       else if (el.type === 'radio') el.checked = (v === el.value);
       else el.value = v;
     }
+    updateCond();
     var s = parseInt(draft.step, 10);
     if (s >= 1) current = Math.min(s, TOTAL - 1);
   }
@@ -113,18 +153,21 @@
     var fields = section.querySelectorAll('.field');
     for (var i = 0; i < fields.length; i++) {
       var f = fields[i];
+      var cb = f.closest('.cond');
+      if (cb && cb.hidden) { fieldError(f, ''); continue; }
       var msg = '';
       var focusEl = null;
       var kind = f.getAttribute('data-required');
+      var needed = reqFor(f);
       if (kind === 'radio') {
-        if (!f.querySelector('input:checked')) { msg = 'Choose one option.'; focusEl = f.querySelector('input'); }
+        if (needed && !f.querySelector('input:checked')) { msg = 'Choose one option.'; focusEl = f.querySelector('input'); }
       } else if (kind === 'check') {
         if (!f.querySelector('input:checked')) { msg = 'Choose at least one option.'; focusEl = f.querySelector('input'); }
       } else {
         var input = f.querySelector('input, textarea');
         if (input) {
           var val = input.value.trim();
-          if (input.required && !val) { msg = 'This field is required.'; focusEl = input; }
+          if ((input.required || (f.hasAttribute('data-req-for') && needed)) && !val) { msg = 'This field is required.'; focusEl = input; }
           else if (val && input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) { msg = 'Enter a valid email address.'; focusEl = input; }
           else if (val && input.type === 'url' && !/^https?:\/\/\S+\.\S+/i.test(val)) { msg = 'Enter a full link starting with http:// or https://.'; focusEl = input; }
           if (focusEl) focusEl.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
@@ -165,6 +208,7 @@
       var dl = document.createElement('dl');
       var keys = ORDER[g][1];
       for (var k = 0; k < keys.length; k++) {
+        if (nameHidden(keys[k])) continue;
         var v = data[keys[k]];
         if (Array.isArray(v)) v = v.join(', ');
         var dt = document.createElement('dt');
@@ -216,6 +260,7 @@
     saveDraft();
   });
   form.addEventListener('change', function (e) {
+    if (e.target.name === 'structure') updateCond();
     var f = e.target.closest ? e.target.closest('.field') : null;
     if (f && f.classList.contains('invalid')) fieldError(f, '');
     saveDraft();
@@ -264,5 +309,6 @@
   });
 
   loadDraft();
+  updateCond();
   go(current, false);
 })();

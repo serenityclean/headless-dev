@@ -181,6 +181,11 @@ section { padding: 112px 0; scroll-margin-top: 64px; }
   background: var(--accent-soft); color: var(--accent); margin-bottom: 8px;
 }
 .card .icon svg { width: 20px; height: 20px; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 760px) { .grid-2 { grid-template-columns: 1fr; } }
+.card h3 { letter-spacing: -0.02em; }
+.card-list { margin: 0; padding-left: 20px; color: var(--muted); font-size: 15.5px; display: grid; gap: 8px; }
+.card .case-link { margin-top: auto; align-self: flex-start; }
 .card-cta { background: transparent; border-style: dashed; justify-content: center; }
 .card-cta a { color: var(--accent); font-weight: 600; text-decoration: none; }
 .card-cta a:hover { text-decoration: underline; text-underline-offset: 3px; }
@@ -377,3 +382,7 @@ section { padding: 112px 0; scroll-margin-top: 64px; }
 .intake-done p:not(.eyebrow) { color: var(--muted); max-width: 52ch; }
 .intake-done a:not(.btn) { color: var(--accent); text-underline-offset: 3px; }
 @media (max-width: 520px) { .intake-done { padding: 32px 20px; } }
+
+.cond { display: grid; gap: 24px; }
+.cond[hidden] { display: none; }
+.cond-note { font-size: 14.5px; color: var(--muted); padding: 14px 16px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
