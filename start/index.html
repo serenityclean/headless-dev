@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Start your project · Headless Dev</title>
+  <meta name="description" content="Tell us what you want built. Fill out a written intake and get a written spec and fixed quote by email within two business days, or a straight answer if we are not the right fit.">
+  <link rel="canonical" href="https://headlessdev.io/start/">
+  <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b0c0e" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Headless Dev">
+  <meta property="og:title" content="Start your project · Headless Dev">
+  <meta property="og:description" content="A written intake, then a written spec and fixed quote by email within two business days.">
+  <meta property="og:url" content="https://headlessdev.io/start/">
+  <meta property="og:image" content="https://headlessdev.io/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="wrap nav" aria-label="Main">
+      <a class="brand" href="../" aria-label="Headless Dev home">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><rect class="mk-bg" width="32" height="32" rx="8"/><rect class="mk-acc" x="8.5" y="6.5" width="4.5" height="3.5" rx="1"/><rect class="mk-fg" x="8.5" y="12" width="4.5" height="13.5" rx="1"/><rect class="mk-fg" x="19" y="6.5" width="4.5" height="19" rx="1"/><rect class="mk-fg" x="8.5" y="15.5" width="15" height="4" rx="1"/></svg>
+        <span>Headless Dev</span>
+      </a>
+      <a class="btn btn-ghost btn-sm" href="../">Back to site</a>
+    </nav>
+  </header>
+
+  <main id="main" class="intake">
+    <div class="wrap intake-wrap">
+      <div class="intake-head">
+        <p class="eyebrow">Project intake</p>
+        <h1>Tell us what you want built.</h1>
+        <p class="lead">Six short steps, written answers. We read every intake and reply by email within two business days with a spec and fixed quote, or a straight answer if we are not the right fit.</p>
+      </div>
+
+      <div id="intake-app">
+        <div class="progress" aria-hidden="false">
+          <p class="progress-label" id="progress-label" aria-live="polite">Step 1 of 7</p>
+          <div class="progress-bar" role="progressbar" aria-valuemin="1" aria-valuemax="7" aria-valuenow="1" aria-labelledby="progress-label"><span id="progress-fill"></span></div>
+        </div>
+
+        <form id="intake-form" class="intake-form" novalidate>
+          <!-- Honeypot: real visitors never see or fill this -->
+          <div class="hp" aria-hidden="true">
+            <label for="f-hp">Leave this field empty</label>
+            <input type="text" id="f-hp" name="hp_field" tabindex="-1" autocomplete="off">
+          </div>
+
+          <!-- Step 1 -->
+          <section class="istep" data-step="1" aria-labelledby="s1-title">
+            <h2 id="s1-title" tabindex="-1">About you</h2>
+            <div class="field">
+              <label for="f-name">Your name <span class="req">Required</span></label>
+              <input type="text" id="f-name" name="name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="f-email">Work email <span class="req">Required</span></label>
+              <input type="email" id="f-email" name="email" autocomplete="email" inputmode="email" required>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="f-company">Company <span class="req">Required</span></label>
+                <input type="text" id="f-company" name="company" autocomplete="organization" required>
+              </div>
+              <div class="field">
+                <label for="f-role">Your role</label>
+                <input type="text" id="f-role" name="role" autocomplete="organization-title">
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-website">Company website</label>
+              <input type="url" id="f-website" name="website" inputmode="url" placeholder="https://" autocomplete="url">
+            </div>
+            <fieldset class="field" data-required="radio" data-name="company_size">
+              <legend>Company size <span class="req">Required</span></legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="company_size" value="Just me"><span>Just me</span></label>
+                <label class="choice"><input type="radio" name="company_size" value="2-10"><span>2-10</span></label>
+                <label class="choice"><input type="radio" name="company_size" value="11-50"><span>11-50</span></label>
+                <label class="choice"><input type="radio" name="company_size" value="51-200"><span>51-200</span></label>
+                <label class="choice"><input type="radio" name="company_size" value="200+"><span>200+</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="field" data-required="radio" data-name="decision_maker">
+              <legend>Are you the decision maker for this budget? <span class="req">Required</span></legend>
+              <div class="choices stack">
+                <label class="choice"><input type="radio" name="decision_maker" value="Yes"><span>Yes</span></label>
+                <label class="choice"><input type="radio" name="decision_maker" value="I recommend, someone else signs"><span>I recommend, someone else signs</span></label>
+                <label class="choice"><input type="radio" name="decision_maker" value="No"><span>No</span></label>
+              </div>
+            </fieldset>
+          </section>
+
+          <!-- Step 2 -->
+          <section class="istep" data-step="2" aria-labelledby="s2-title" hidden>
+            <h2 id="s2-title" tabindex="-1">What you want built</h2>
+            <fieldset class="field" data-required="check" data-name="project_types">
+              <legend>Project type <span class="req">Required</span> <span class="hint">Choose all that apply.</span></legend>
+              <div class="choices stack">
+                <label class="choice"><input type="checkbox" name="project_types" value="Web platform or SaaS"><span>Web platform or SaaS</span></label>
+                <label class="choice"><input type="checkbox" name="project_types" value="Mobile app"><span>Mobile app</span></label>
+                <label class="choice"><input type="checkbox" name="project_types" value="Internal tool or dashboard"><span>Internal tool or dashboard</span></label>
+                <label class="choice"><input type="checkbox" name="project_types" value="AI automation or agents"><span>AI automation or agents</span></label>
+                <label class="choice"><input type="checkbox" name="project_types" value="Platform migration off vendor software"><span>Platform migration off vendor software</span></label>
+                <label class="choice"><input type="checkbox" name="project_types" value="Other"><span>Other</span></label>
+              </div>
+            </fieldset>
+            <div class="field">
+              <label for="f-description">Describe what you want built <span class="req">Required</span></label>
+              <p class="hint" id="h-description">One solid paragraph. What is it, who is it for, and what does it do?</p>
+              <textarea id="f-description" name="description" rows="6" aria-describedby="h-description" required></textarea>
+            </div>
+            <div class="field">
+              <label for="f-success">What problem does it solve, and what does success look like in 90 days? <span class="req">Required</span></label>
+              <textarea id="f-success" name="success_90_days" rows="5" required></textarea>
+            </div>
+          </section>
+
+          <!-- Step 3 -->
+          <section class="istep" data-step="3" aria-labelledby="s3-title" hidden>
+            <h2 id="s3-title" tabindex="-1">Where you are today</h2>
+            <div class="field">
+              <label for="f-tools">Current tools or software this replaces or connects to</label>
+              <textarea id="f-tools" name="current_tools" rows="4" placeholder="Name the products you use now and what each one does for you."></textarea>
+            </div>
+            <fieldset class="field">
+              <legend>Integrations needed <span class="hint">Choose all that apply.</span></legend>
+              <div class="choices">
+                <label class="choice"><input type="checkbox" name="integrations" value="Stripe"><span>Stripe</span></label>
+                <label class="choice"><input type="checkbox" name="integrations" value="QuickBooks"><span>QuickBooks</span></label>
+                <label class="choice"><input type="checkbox" name="integrations" value="HubSpot"><span>HubSpot</span></label>
+                <label class="choice"><input type="checkbox" name="integrations" value="Salesforce"><span>Salesforce</span></label>
+                <label class="choice"><input type="checkbox" name="integrations" value="Google Workspace"><span>Google Workspace</span></label>
+                <label class="choice"><input type="checkbox" name="integrations" value="Slack"><span>Slack</span></label>
+                <label class="choice"><input type="checkbox" name="integrations" value="Twilio"><span>Twilio</span></label>
+                <label class="choice"><input type="checkbox" name="integrations" value="Custom API"><span>Custom API</span></label>
+              </div>
+            </fieldset>
+            <div class="field">
+              <label for="f-integrations-other">Other integrations</label>
+              <input type="text" id="f-integrations-other" name="integrations_other">
+            </div>
+            <fieldset class="field" data-required="radio" data-name="data_migration">
+              <legend>Data to migrate <span class="req">Required</span></legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="data_migration" value="None"><span>None</span></label>
+                <label class="choice"><input type="radio" name="data_migration" value="Some"><span>Some</span></label>
+                <label class="choice"><input type="radio" name="data_migration" value="Lots"><span>Lots</span></label>
+              </div>
+            </fieldset>
+            <div class="field">
+              <label for="f-data-details">Describe the data</label>
+              <textarea id="f-data-details" name="data_details" rows="3" placeholder="Where it lives now, rough volume, and its format."></textarea>
+            </div>
+            <fieldset class="field" data-required="radio" data-name="users_who">
+              <legend>Who will use it? <span class="req">Required</span></legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="users_who" value="Internal staff"><span>Internal staff</span></label>
+                <label class="choice"><input type="radio" name="users_who" value="Customers"><span>Customers</span></label>
+                <label class="choice"><input type="radio" name="users_who" value="Both"><span>Both</span></label>
+              </div>
+            </fieldset>
+            <div class="field">
+              <label for="f-users-count">Roughly how many users?</label>
+              <input type="text" id="f-users-count" name="users_count" inputmode="numeric" placeholder="For example, 25 staff and 2,000 customers">
+            </div>
+          </section>
+
+          <!-- Step 4 -->
+          <section class="istep" data-step="4" aria-labelledby="s4-title" hidden>
+            <h2 id="s4-title" tabindex="-1">Must-haves and nice-to-haves</h2>
+            <div class="field">
+              <label for="f-must">Must-haves <span class="req">Required</span></label>
+              <p class="hint" id="h-must">What has to work on day one for this to be worth building?</p>
+              <textarea id="f-must" name="must_haves" rows="6" aria-describedby="h-must" required></textarea>
+            </div>
+            <div class="field">
+              <label for="f-nice">Nice-to-haves</label>
+              <p class="hint" id="h-nice">What can wait for a later phase?</p>
+              <textarea id="f-nice" name="nice_to_haves" rows="4" aria-describedby="h-nice"></textarea>
+            </div>
+            <div class="field">
+              <label for="f-links">Existing spec, designs or reference links</label>
+              <p class="hint" id="h-links">Paste a link to a document, Figma file, folder or competitor product.</p>
+              <input type="url" id="f-links" name="reference_url" inputmode="url" placeholder="https://" aria-describedby="h-links">
+            </div>
+          </section>
+
+          <!-- Step 5 -->
+          <section class="istep" data-step="5" aria-labelledby="s5-title" hidden>
+            <h2 id="s5-title" tabindex="-1">Timeline and budget</h2>
+            <fieldset class="field" data-required="radio" data-name="target_launch">
+              <legend>Target launch <span class="req">Required</span></legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="target_launch" value="ASAP, under 1 month"><span>ASAP, under 1 month</span></label>
+                <label class="choice"><input type="radio" name="target_launch" value="1-3 months"><span>1-3 months</span></label>
+                <label class="choice"><input type="radio" name="target_launch" value="3-6 months"><span>3-6 months</span></label>
+                <label class="choice"><input type="radio" name="target_launch" value="Exploring"><span>Exploring</span></label>
+              </div>
+            </fieldset>
+            <div class="field">
+              <label for="f-deadline">Is there a hard deadline?</label>
+              <p class="hint" id="h-deadline">Optional. Pick a date if something fixed drives the schedule, such as a contract end or a launch event.</p>
+              <input type="date" id="f-deadline" name="hard_deadline" aria-describedby="h-deadline">
+            </div>
+            <fieldset class="field" data-required="radio" data-name="budget">
+              <legend>Budget range <span class="req">Required</span></legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="budget" value="Under $10K"><span>Under $10K</span></label>
+                <label class="choice"><input type="radio" name="budget" value="$10K-$25K"><span>$10K-$25K</span></label>
+                <label class="choice"><input type="radio" name="budget" value="$25K-$50K"><span>$25K-$50K</span></label>
+                <label class="choice"><input type="radio" name="budget" value="$50K-$100K"><span>$50K-$100K</span></label>
+                <label class="choice"><input type="radio" name="budget" value="$100K+"><span>$100K+</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="field" data-required="radio" data-name="payment_style">
+              <legend>How would you prefer to pay? <span class="req">Required</span></legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="payment_style" value="One-time project"><span>One-time project</span></label>
+                <label class="choice"><input type="radio" name="payment_style" value="Monthly retainer"><span>Monthly retainer</span></label>
+                <label class="choice"><input type="radio" name="payment_style" value="Not sure"><span>Not sure</span></label>
+              </div>
+            </fieldset>
+          </section>
+
+          <!-- Step 6 -->
+          <section class="istep" data-step="6" aria-labelledby="s6-title" hidden>
+            <h2 id="s6-title" tabindex="-1">Anything else</h2>
+            <div class="field">
+              <label for="f-else">Anything else we should know?</label>
+              <p class="hint" id="h-else">Constraints, past attempts, compliance needs, or anything that did not fit above.</p>
+              <textarea id="f-else" name="anything_else" rows="6" aria-describedby="h-else"></textarea>
+            </div>
+            <div class="field">
+              <label for="f-heard">How did you hear about us?</label>
+              <input type="text" id="f-heard" name="heard_about_us">
+            </div>
+          </section>
+
+          <!-- Step 7 -->
+          <section class="istep" data-step="7" aria-labelledby="s7-title" hidden>
+            <h2 id="s7-title" tabindex="-1">Review and submit</h2>
+            <p class="review-note">Check your answers. Use Edit to change anything, then submit.</p>
+            <div id="review" class="review"></div>
+          </section>
+
+          <p class="form-error" id="step-error" role="alert" hidden></p>
+
+          <div class="intake-nav">
+            <button type="button" class="btn btn-ghost" id="btn-back">Back</button>
+            <button type="button" class="btn btn-primary" id="btn-next">Next <span class="arrow" aria-hidden="true">&rarr;</span></button>
+            <button type="submit" class="btn btn-primary" id="btn-submit" hidden>Submit intake</button>
+          </div>
+          <p class="form-error" id="submit-error" role="alert" hidden></p>
+        </form>
+      </div>
+
+      <div id="intake-done" class="intake-done" tabindex="-1" hidden>
+        <p class="eyebrow">Intake received</p>
+        <h2>Thank you. We have your intake.</h2>
+        <p>We will read it and reply by email within two business days. You will get one of two things: a written spec with a fixed quote, or a straight answer that we are not the right fit.</p>
+        <p>If you need to add something, email <a href="mailto:tyler@headlessdev.io">tyler@headlessdev.io</a>.</p>
+        <a class="btn btn-ghost" href="../">Back to Headless Dev</a>
+      </div>
+
+      <noscript><p class="form-error">The intake form needs JavaScript. Email <a href="mailto:tyler@headlessdev.io">tyler@headlessdev.io</a> instead.</p></noscript>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-row">
+      <p>Headless Dev, LLC · Cleveland, Ohio</p>
+      <ul class="footer-links">
+        <li><a href="mailto:tyler@headlessdev.io">tyler@headlessdev.io</a></li>
+        <li><a href="../privacy/">Privacy</a></li>
+        <li><a href="../terms/">Terms</a></li>
+        <li>&copy; <span data-year>2026</span> Headless Dev, LLC</li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="../main.js" defer></script>
+  <script src="intake.js" defer></script>
+</body>
+</html>
