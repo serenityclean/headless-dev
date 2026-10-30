@@ -1,5 +1,5 @@
 (function () {
-  const INTAKE_ENDPOINT = "";
+  const INTAKE_ENDPOINT = "https://script.google.com/macros/s/AKfycbzZyX4FpRosLm_D5CpzkpOZ27X-Q7NfbcO4BXppcBRDro5vrY4nziVy9JzKROHCadb8JA/exec";
   var DRAFT_KEY = "hd-intake-draft-v1";
   var TOTAL = 7;
 
@@ -292,10 +292,13 @@
     showError(submitError, '');
     fetch(INTAKE_ENDPOINT, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify(payload)
     }).then(function (res) {
       if (!res.ok) throw new Error('bad status');
+      return res.json();
+    }).then(function (out) {
+      if (!out || out.ok !== true) throw new Error('rejected');
       clearDraft();
       app.hidden = true;
       done.hidden = false;
