@@ -281,7 +281,7 @@
     }
     showError(stepError, '');
     if (!INTAKE_ENDPOINT) {
-      showError(submitError, 'Intake is not open yet, email tyler@headlessdev.io');
+      showError(submitError, 'Intake is not open yet, email hello@headlessdev.io');
       return;
     }
     var payload = collect();
@@ -305,7 +305,7 @@
       done.focus();
       window.scrollTo(0, 0);
     }).catch(function () {
-      showError(submitError, 'Something went wrong sending your intake. Try again, or email tyler@headlessdev.io.');
+      showError(submitError, 'Something went wrong sending your intake. Try again, or email hello@headlessdev.io.');
       submit.disabled = false;
       submit.textContent = 'Submit intake';
     });
